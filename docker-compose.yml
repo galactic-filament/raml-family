@@ -1,0 +1,12 @@
+base-raml-viewer:
+  image: ihsw/raml-family
+raml-viewer:
+  extends:
+    service: base-raml-viewer
+  ports:
+    - 80:80
+raml-viewer-dev:
+  extends:
+    service: raml-viewer
+  volumes:
+    - ./app:/srv/app
