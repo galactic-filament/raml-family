@@ -1,5 +1,9 @@
 base:
   image: ihsw/raml-family
+test-base:
+  extends:
+    service: base
+  command: npm test --silent
 
 web:
   extends:
@@ -9,5 +13,14 @@ web:
 web-dev:
   extends:
     service: web
+  volumes:
+    - ./app:/srv/app
+
+test:
+  extends:
+    service: test-base
+test-dev:
+  extends:
+    service: test-base
   volumes:
     - ./app:/srv/app

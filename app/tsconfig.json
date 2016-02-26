@@ -29,6 +29,9 @@
         "typings/mime/mime.d.ts",
         "typings/node/node.d.ts",
         "typings/serve-static/serve-static.d.ts",
+        "typings/superagent/superagent.d.ts",
+        "typings/supertest/supertest.d.ts",
+        "typings/tape/tape.d.ts",
         "typings/tsd.d.ts"
     ],
     "atom": {
