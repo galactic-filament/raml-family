@@ -19,6 +19,6 @@ export namespace Server {
   export let app = express();
   app.get("/:file?", (req, res) => {
     let params = merge({ file: "schema" }, pickNonfalsy(req.params));
-    render(res, `./${params.file}.raml`);
+    render(res, `../schemas/${params.file}.raml`);
   });
 }
