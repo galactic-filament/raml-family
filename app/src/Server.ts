@@ -1,8 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 import * as express from "express";
-let _ = require("underscore");
 let raml2html = require("raml2html");
-let merge = require("merge");
 
 export namespace Server {
   // misc
@@ -13,12 +11,14 @@ export namespace Server {
       (err: Error) => res.send(err)
     );
   };
-  let pickNonfalsy = _.partial(_.pick, _, _.identity);
 
   // express server
   export let app = express();
   app.get("/:file?", (req, res) => {
-    let params = merge({ file: "schema" }, pickNonfalsy(req.params));
-    render(res, `../schemas/${params.file}.raml`);
+    let schema = req.params.file;
+    if (typeof schema === "undefined") {
+      schema = "schema";
+    }
+    render(res, `../schemas/${schema}.raml`);
   });
 }
