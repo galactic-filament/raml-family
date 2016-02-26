@@ -1,5 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 import * as express from "express";
+import * as fs from "fs";
 let raml2html = require("raml2html");
 
 export namespace Server {
@@ -15,10 +16,26 @@ export namespace Server {
   // express server
   export let app = express();
   app.get("/:file?", (req, res) => {
+    // resolving the schema name
     let schema = req.params.file;
     if (typeof schema === "undefined") {
       schema = "schema";
     }
-    render(res, `../schemas/${schema}.raml`);
+
+    // checking if it exists
+    let filepath = `./schemas/${schema}.raml`;
+    fs.stat(filepath, ((err, stats) => {
+      if (err) {
+        if (err.code === "ENOENT") {
+          res.status(404).send({});
+          return;
+        }
+
+        res.status(500).send(JSON.stringify(err));
+        return;
+      }
+
+      render(res, filepath);
+    }));
   });
 }

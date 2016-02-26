@@ -24,3 +24,14 @@ test("Music schema should work", (t: test.Test) => {
       t.end();
     });
 });
+
+test("Invalid schema should return 404", (t: test.Test) => {
+  let url = "/ayy";
+  supertest(Server.app)
+    .get(url)
+    .end((err: Error, res: supertest.Response) => {
+      t.equal(err, null, `GET ${url} err was not null`);
+      t.equal(res.status, 404, `GET ${url} response status was not 404`);
+      t.end();
+    });
+});
