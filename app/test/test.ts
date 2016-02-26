@@ -9,7 +9,7 @@ test("Homepage should work", (t: test.Test) => {
     .get(url)
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `GET ${url} err was not null`);
-      t.equal(res.status, 200, `GET ${url} response status was not 200`);
+      t.equal(res.status, 200, `GET ${url} response status was 200`);
       t.end();
     });
 });
@@ -20,7 +20,7 @@ test("Music schema should work", (t: test.Test) => {
     .get(url)
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `GET ${url} err was not null`);
-      t.equal(res.status, 200, `GET ${url} response status was not 200`);
+      t.equal(res.status, 200, `GET ${url} response status was 200`);
       t.end();
     });
 });
@@ -31,7 +31,7 @@ test("Invalid schema should return 404", (t: test.Test) => {
     .get(url)
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `GET ${url} err was not null`);
-      t.equal(res.status, 404, `GET ${url} response status was not 404`);
+      t.equal(res.status, 404, `GET ${url} response status was 404`);
       t.end();
     });
 });
