@@ -6,8 +6,8 @@ node_js:
 
 before_install:
   - cd ./app
-before_script:
-  - npm install
+install:
   - npm run typings install
-  - npm run lint
   - npm run build
+before_script:
+  - npm run lint

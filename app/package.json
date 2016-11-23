@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc --noUnusedParameters --noUnusedLocals && echo built",
     "lint": "tslint ./test/**/*.ts ./src/**/*.ts && echo linted",
-    "test": "tsc --noUnusedParameters --noUnusedLocals && tape ./dist/test/**/*.js | tap-spec",
+    "test": "tape ./dist/test/**/*.js | tap-spec",
     "typings": "typings",
     "tap-spec": "tap-spec"
   },
