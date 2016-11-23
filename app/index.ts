@@ -1,4 +1,4 @@
-/// <reference path="./typings/tsd.d.ts" />
+/// <reference path="./typings/index.d.ts" />
 import {Server} from "./src/Server";
 
 Server.app.listen(80, () => { console.log("Listening on 80"); });
