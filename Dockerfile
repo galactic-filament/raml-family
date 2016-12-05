@@ -1,6 +1,6 @@
 FROM node
 
-EXPOSE 80
+EXPOSE 8080
 
 # add user
 ENV APP_USER raml-family
